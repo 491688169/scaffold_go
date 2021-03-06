@@ -2,6 +2,7 @@ package main
 
 import (
 	"demo/global"
+	"demo/internal/model"
 	"demo/internal/routers"
 	"demo/pkg/setting"
 	"log"
@@ -14,6 +15,9 @@ import (
 func init() {
 	if err := setupSetting(); err != nil {
 		log.Fatalf("init.setuSetting err: %v", err)
+	}
+	if err := setupDBEngine(); err != nil {
+		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
 }
 
@@ -50,6 +54,17 @@ func setupSetting() error {
 
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
+
+	return nil
+}
+
+func setupDBEngine() error {
+	var err error
+	global.DBEngine, err = model.NewDBEngine(global.DatabaseSetting)
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
