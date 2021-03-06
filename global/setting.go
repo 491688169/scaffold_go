@@ -1,6 +1,7 @@
 package global
 
 import (
+	"demo/pkg/logger"
 	"demo/pkg/setting"
 
 	"gorm.io/gorm"
@@ -12,4 +13,5 @@ var (
 	DatabaseSetting *setting.DatabaseSettingS
 
 	DBEngine *gorm.DB
+	Logger   *logger.Logger
 )

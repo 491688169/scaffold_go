@@ -18,6 +18,6 @@ Database:
     DBName: demo_service
     TablePrefix: demo
     Charset: utf8mb4
-    ParseTime: true
+    ParseTime: True
     MaxIdleConns: 10
     MaxOpenConns: 30

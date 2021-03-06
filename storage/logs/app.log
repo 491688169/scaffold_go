@@ -1,0 +1,5 @@
+2021/03/07 02:27:37 {"callers":["/Users/qianjin/Workspace/scaffold_go/main.go: 24 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blogservice","time":1615055257665087000}
+2021/03/07 02:28:15 {"callers":["/Users/qianjin/Workspace/scaffold_go/main.go: 24 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blogservice","time":1615055295608312000}
+2021/03/07 02:29:03 {"callers":["/Users/qianjin/Workspace/scaffold_go/main.go: 24 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blogservice","time":1615055343625523000}
+2021/03/07 02:29:20 111
+2021/03/07 02:29:20 {"callers":["/Users/qianjin/Workspace/scaffold_go/main.go: 24 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blogservice","time":1615055360413722000}
