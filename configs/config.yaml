@@ -13,7 +13,8 @@ Database:
     DBType: mysql
     Username: root
     Password: root
-    Host: 127.0.0.1:3306
+    Host: 127.0.0.1
+    Port: 3306
     DBName: demo_service
     TablePrefix: demo
     Charset: utf8mb4
