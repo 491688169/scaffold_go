@@ -1,3 +1,11 @@
+/*
+ * @Author: Kim
+ * @Date: 2021-03-08 14:00:59
+ * @LastEditTime: 2021-03-08 14:58:43
+ * @LastEditors: Kim
+ * @Description:
+ * @FilePath: /scaffold_go/main.go
+ */
 package main
 
 import (
