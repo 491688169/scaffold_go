@@ -1,0 +1,47 @@
+definitions:
+  errcode.Error:
+    type: object
+  model.Tag:
+    type: object
+info:
+  contact: {}
+  description: 模板项目
+  title: demo系统
+  version: "1.0"
+paths:
+  /api/v1/tags:
+    get:
+      parameters:
+      - default: 1
+        description: 状态
+        enum:
+        - 0
+        - 1
+        in: query
+        name: state
+        type: integer
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页数量
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.Tag'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 获取多个标签
+swagger: "2.0"

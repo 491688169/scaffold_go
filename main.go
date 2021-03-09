@@ -1,7 +1,7 @@
 /*
  * @Author: Kim
  * @Date: 2021-03-08 14:00:59
- * @LastEditTime: 2021-03-08 14:58:43
+ * @LastEditTime: 2021-03-09 10:42:55
  * @LastEditors: Kim
  * @Description:
  * @FilePath: /scaffold_go/main.go
@@ -26,14 +26,17 @@ func init() {
 	if err := setupSetting(); err != nil {
 		log.Fatalf("init.setuSetting err: %v", err)
 	}
-	if err := setupDBEngine(); err != nil {
-		log.Fatalf("init.setupDBEngine err: %v", err)
-	}
+	// if err := setupDBEngine(); err != nil {
+	// 	log.Fatalf("init.setupDBEngine err: %v", err)
+	// }
 	if err := setupLogger(); err != nil {
 		log.Fatalf("init.setupLogger err: %v", err)
 	}
 }
 
+// @title demo系统
+// @version 1.0
+// @description 模板项目
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
