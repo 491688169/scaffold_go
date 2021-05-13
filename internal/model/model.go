@@ -1,3 +1,11 @@
+/*
+ * @Author: Kim
+ * @Date: 2021-03-08 14:00:59
+ * @LastEditTime: 2021-05-12 11:18:33
+ * @LastEditors: Kim
+ * @Description:
+ * @FilePath: /template_go/internal/model/model.go
+ */
 package model
 
 import (
@@ -12,6 +20,10 @@ import (
 )
 
 type Model struct {
+	gorm.Model
+	CreatedBy  string `json:"created_by"`
+	ModifiedBy string `json:"modified_by"`
+	IsDel      uint8  `json:"is_del"`
 }
 
 func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {

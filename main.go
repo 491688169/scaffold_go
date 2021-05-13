@@ -1,10 +1,10 @@
 /*
  * @Author: Kim
  * @Date: 2021-03-08 14:00:59
- * @LastEditTime: 2021-03-09 10:42:55
+ * @LastEditTime: 2021-05-12 09:34:10
  * @LastEditors: Kim
  * @Description:
- * @FilePath: /scaffold_go/main.go
+ * @FilePath: /template_go/main.go
  */
 package main
 
@@ -26,9 +26,9 @@ func init() {
 	if err := setupSetting(); err != nil {
 		log.Fatalf("init.setuSetting err: %v", err)
 	}
-	// if err := setupDBEngine(); err != nil {
-	// 	log.Fatalf("init.setupDBEngine err: %v", err)
-	// }
+	if err := setupDBEngine(); err != nil {
+		log.Fatalf("init.setupDBEngine err: %v", err)
+	}
 	if err := setupLogger(); err != nil {
 		log.Fatalf("init.setupLogger err: %v", err)
 	}

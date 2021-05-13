@@ -12,11 +12,11 @@ App:
 Database:
     DBType: mysql
     Username: root
-    Password: root
+    Password: abc123
     Host: 127.0.0.1
     Port: 3306
     DBName: demo_service
-    TablePrefix: demo
+    TablePrefix: demo_
     Charset: utf8mb4
     ParseTime: True
     MaxIdleConns: 10
