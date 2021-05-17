@@ -1,7 +1,7 @@
 /*
  * @Author: Kim
  * @Date: 2021-05-12 15:01:22
- * @LastEditTime: 2021-05-13 15:29:05
+ * @LastEditTime: 2021-05-14 11:22:07
  * @LastEditors: Kim
  * @Description:
  * @FilePath: /template_go/internal/routers/api/auth.go
@@ -35,5 +35,16 @@ func GetAuth(c *gin.Context) {
 		response.ToErrorResponse(errcode.UnauthorizedAuthNotExist)
 		return
 	}
+
+	token, err := app.GenerateToken(param.AppKey, param.AppSecret)
+	if err != nil {
+		global.Logger.Errorf(c, "app.GenerateToken err: %v", err)
+		response.ToErrorResponse(errcode.UnauthorizedTokenGenerate)
+		return
+	}
+
+	response.ToResponse(gin.H{
+		token: token,
+	})
 
 }

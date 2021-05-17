@@ -1,7 +1,7 @@
 /*
  * @Author: Kim
  * @Date: 2021-03-08 14:00:59
- * @LastEditTime: 2021-05-12 09:34:10
+ * @LastEditTime: 2021-05-14 10:31:10
  * @LastEditors: Kim
  * @Description:
  * @FilePath: /template_go/main.go
@@ -65,6 +65,10 @@ func setupSetting() error {
 	}
 
 	if err := setting.ReadSection("Database", &global.DatabaseSetting); err != nil {
+		return err
+	}
+
+	if err := setting.ReadSection("JWT", &global.DatabaseSetting); err != nil {
 		return err
 	}
 

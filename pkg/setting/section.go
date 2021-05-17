@@ -1,3 +1,11 @@
+/*
+ * @Author: Kim
+ * @Date: 2021-03-08 14:00:59
+ * @LastEditTime: 2021-05-14 10:28:51
+ * @LastEditors: Kim
+ * @Description:
+ * @FilePath: /template_go/pkg/setting/section.go
+ */
 package setting
 
 import "time"
@@ -29,6 +37,12 @@ type DatabaseSettingS struct {
 	ParseTime    bool
 	MaxIdleConns int
 	MaxOpenConns int
+}
+
+type JWTSettingS struct {
+	Secret string
+	Issuer string
+	Expire time.Duration
 }
 
 func (s *Setting) ReadSection(k string, v interface{}) error {
