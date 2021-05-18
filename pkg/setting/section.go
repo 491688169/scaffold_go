@@ -1,7 +1,7 @@
 /*
  * @Author: Kim
  * @Date: 2021-03-08 14:00:59
- * @LastEditTime: 2021-05-14 10:28:51
+ * @LastEditTime: 2021-05-18 18:01:40
  * @LastEditors: Kim
  * @Description:
  * @FilePath: /template_go/pkg/setting/section.go
@@ -18,11 +18,12 @@ type ServerSettingS struct {
 }
 
 type AppSettingS struct {
-	DefaultPageSize int
-	MaxPageSize     int
-	LogSavePath     string
-	LogFileName     string
-	LogFileExt      string
+	DefaultContextTimeout time.Duration
+	DefaultPageSize       int
+	MaxPageSize           int
+	LogSavePath           string
+	LogFileName           string
+	LogFileExt            string
 }
 
 type DatabaseSettingS struct {
@@ -43,6 +44,16 @@ type JWTSettingS struct {
 	Secret string
 	Issuer string
 	Expire time.Duration
+}
+
+type EmailSettingS struct {
+	Host     string
+	Port     int
+	UserName string
+	Password string
+	IsSSL    bool
+	From     string
+	To       []string
 }
 
 func (s *Setting) ReadSection(k string, v interface{}) error {

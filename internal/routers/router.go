@@ -1,7 +1,7 @@
 /*
  * @Author: Kim
  * @Date: 2021-03-08 14:00:59
- * @LastEditTime: 2021-05-12 15:03:08
+ * @LastEditTime: 2021-05-18 18:06:19
  * @LastEditors: Kim
  * @Description:
  * @FilePath: /template_go/internal/routers/router.go
@@ -27,9 +27,13 @@ func NewRouter() *gin.Engine {
 	if global.ServerSetting.RunMode == "debug" {
 		r.Use(gin.Logger())
 		r.Use(gin.Recovery())
+	} else {
+		r.Use(middleware.AccessLog())
+		r.Use(middleware.Recovery())
 	}
 
 	r.Use(middleware.Translations())
+	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
 
 	r.POST("/auth", api.GetAuth)
 	tag := v1.NewTag()

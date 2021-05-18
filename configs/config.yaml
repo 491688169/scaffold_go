@@ -4,6 +4,7 @@ Server:
     ReadTimeout: 60
     WriteTimeout: 60
 App:
+    DefaultContextTimeout: 60
     DefaultPageSize: 10
     MaxPageSize: 100
     LogSavePath: storage/logs
@@ -25,3 +26,12 @@ JWT:
     Secret: demo_golang
     Issuer: demo
     Expire: 7200
+Email:
+    Host: smtp.qq.com
+    Port: 465
+    UserName: xxx
+    Password: xxx
+    IsSSL: true
+    From: xxx
+    To:
+        - xxx

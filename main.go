@@ -1,7 +1,7 @@
 /*
  * @Author: Kim
  * @Date: 2021-03-08 14:00:59
- * @LastEditTime: 2021-05-14 10:31:10
+ * @LastEditTime: 2021-05-18 18:55:22
  * @LastEditors: Kim
  * @Description:
  * @FilePath: /template_go/main.go
@@ -14,6 +14,7 @@ import (
 	"demo/internal/routers"
 	"demo/pkg/logger"
 	"demo/pkg/setting"
+	"flag"
 	"log"
 	"net/http"
 	"time"
@@ -22,7 +23,17 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
+var (
+	port      string
+	runMode   string
+	config    string
+	isVersion bool
+)
+
 func init() {
+	if err := setupFlag(); err != nil {
+		log.Fatalf("init.setupFlag err: %v", err)
+	}
 	if err := setupSetting(); err != nil {
 		log.Fatalf("init.setuSetting err: %v", err)
 	}
@@ -50,6 +61,16 @@ func main() {
 	s.ListenAndServe()
 }
 
+func setupFlag() error {
+	flag.StringVar(&port, "port", "", "启动端口")
+	flag.StringVar(&runMode, "mode", "", "启动模式")
+	flag.StringVar(&config, "config", "configs/", "指定要使用的配置文件路径")
+	flag.BoolVar(&isVersion, "version", false, "编译信息")
+	flag.Parse()
+
+	return nil
+}
+
 func setupSetting() error {
 	setting, err := setting.NewSetting()
 	if err != nil {
@@ -72,8 +93,16 @@ func setupSetting() error {
 		return err
 	}
 
+	global.AppSetting.DefaultContextTimeout *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
+	global.JWTSetting.Expire *= time.Second
+	if port != "" {
+		global.ServerSetting.HttpPort = port
+	}
+	if runMode != "" {
+		global.ServerSetting.RunMode = runMode
+	}
 
 	return nil
 }

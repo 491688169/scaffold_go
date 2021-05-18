@@ -133,6 +133,25 @@ func (l *Logger) JSONFormat(level Level, message string) map[string]interface{} 
 	return data
 }
 
+func (l *Logger) WithCallersFrames() *Logger {
+	maxCallerDepth := 25
+	minCallerDepth := 1
+	callers := []string{}
+	pcs := make([]uintptr, maxCallerDepth)
+	depth := runtime.Callers(minCallerDepth, pcs)
+	frames := runtime.CallersFrames(pcs[:depth])
+	for frame, more := frames.Next(); more; frame, more = frames.Next() {
+		s := fmt.Sprintf("%s: %d %s", frame.File, frame.Line, frame.Function)
+		callers = append(callers, s)
+		if !more {
+			break
+		}
+	}
+	ll := l.Clone()
+	ll.callers = callers
+	return ll
+}
+
 func (l *Logger) WithTrace() *Logger {
 	ginCtx, ok := l.ctx.(*gin.Context)
 	if ok {
